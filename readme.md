@@ -78,7 +78,7 @@ iterationsMin=“8”
 iterationsMax=“12”
 cycleDelay=“4000”
 loop=“true”
-font=”‘DIN 1451 LT Pro’, sans-serif”
+font=”din-1451-lt-pro”
 ]
 ```
 This shortcode will display a light-themed split-flap with 10 columns, flipping through four cities using a custom font.
