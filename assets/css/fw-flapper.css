@@ -134,30 +134,26 @@
 /* Responsive T-shirt Sizes for Split-Flap Digits */
 
 .split-flap-display[data-size="sm"] .split-flap-digit {
-  width: clamp(1.75rem, 3.5vw, 2.25rem);
-  height: clamp(2.25rem, 4.5vw, 3rem);
-  font-size: clamp(1.5rem, 3.5vw, 1.75rem);
-  line-height: calc(12px + 2ex);
+  width: 30px;
+  height: 40px;
+  font-size: 28px;
+  line-height: 1.38;
 }
-
 .split-flap-display[data-size="md"] .split-flap-digit {
-  width: clamp(2rem, 4vw, 3rem);
-  height: clamp(2.75rem, 6.5vw, 3.375rem);
-  font-size: clamp(2rem, 4.5vw, 2.375rem);
-  line-height:calc(7px + 2ex);
+  width: 40px;
+  height: 54px;
+  font-size: 38px;
+  line-height: 1.42;
 }
-
 .split-flap-display[data-size="lg"] .split-flap-digit {
-  width: clamp(2.3rem, 5vw, 3.45rem);
-  height: clamp(3.25rem, 7.5vw, 3.9rem);
-  font-size: clamp(2.3rem, 5.5vw, 2.7rem);
-  line-height:calc(17px + 2ex);
+  width: 60px;
+  height: 80px;
+  font-size: 56px;
+  line-height: 1.42;
 }
-
 .split-flap-display[data-size="xl"] .split-flap-digit {
-  width: clamp(2.66rem, 6vw, 4rem);
-  height: clamp(3.66rem, 8.5vw, 4.5rem);
-  font-size: clamp(2.66rem, 6.5vw, 3rem);
-  line-height: calc(20px + 2ex);
+  width: 90px;
+  height: 110px;
+  font-size: 76px;
+  line-height: 1.42;
 }
-
