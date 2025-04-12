@@ -1,6 +1,6 @@
 # FW SplitFlip Plugin
 
-**FW SplitFlip* is a WordPress plugin that implements a split-flap display effect using a shortcode. The display is built with vanilla JavaScript and CSS and supports multiple configuration options, including multi-line text wrapping. This allows you to show a dynamic, animated display that can cycle through multiple phrases without breaking words.
+**FW SplitFlip*** is a WordPress plugin that implements a split-flap display effect using a shortcode. The display is built with vanilla JavaScript and CSS and supports multiple configuration options, including multi-line text wrapping. This allows you to show a dynamic, animated display that can cycle through multiple phrases without breaking words.
 
 ## Features
 
@@ -29,65 +29,63 @@
 
 Place the shortcode in a WordPress post or page with the available attributes. The plugin supports the following attributes:
 
-- **value**:  
+- **value**:
   A single text string to display. _(Default: "0")_
-  
-- **values**:  
+
+- **values**:
   A semicolon-delimited list of text values. If provided, this takes precedence over **value**.
-  
-- **width**:  
+
+- **width**:
   Maximum number of tiles per row. Long text is wrapped into new rows as needed. _(Default: 5)_
-  
-- **size**:  
+
+- **size**:
   Display size. Options: `small`, `medium`, `large`. _(Default: medium)_
-  
-- **theme**:  
+
+- **theme**:
   Color theme. Options: `dark`, `light`. _(Default: dark)_
-  
-- **chars**:  
+
+- **chars**:
   Character set for randomized flips. Options: `numeric`, `alpha`, `alphanumeric`. _(Default: numeric)_
-  
-- **align**:  
+
+- **align**:
   Text alignment in the digit panels. Options: `left`, `right`. _(Default: left)_
-  
-- **padding**:  
+
+- **padding**:
   Character used for padding if the text is shorter than the width. _(Default: a single space)_
-  
-- **speed**:  
+
+- **speed**:
   Duration (in milliseconds) for each flip cycle. _(Default: 2)_
-  
-- **iterationsMin**:  
+
+- **iterationsMin**:
   Minimum number of random flip iterations per digit. _(Default: 4)_
-  
-- **iterationsMax**:  
+
+- **iterationsMax**:
   Maximum number of random flip iterations per digit. _(Default: 8)_
-  
-- **cycleDelay**:  
+
+- **cycleDelay**:
   Delay (in milliseconds) between cycling values when using multiple values. _(Default: 4)_
-  
-- **loop**:  
+
+- **loop**:
   Whether to cycle through values continuously. Accepts `"true"` or `"false"`. _(Default: true)_
 
 ### Example Shortcode
 
 ```plaintext
-[split_flap 
-  value="Traditionally our industry has used Lorem Ipsum, which is placeholder text written in Latin. Unfortunately, not everyone is familiar with Lorem Ipsum and that can lead to confusion." 
-  width="30" 
-  size="medium" 
-  theme="dark" 
-  chars="alpha" 
-  align="left" 
-  padding=" " 
-  speed="2" 
-  iterationsMin="5" 
-  iterationsMax="8" 
-  cycleDelay="4" 
+[split_flap
+  value="Traditionally our industry has used Lorem Ipsum, which is placeholder text written in Latin. Unfortunately, not everyone is familiar with Lorem Ipsum and that can lead to confusion."
+  width="30"
+  size="medium"
+  theme="dark"
+  chars="alpha"
+  align="left"
+  padding=" "
+  speed="2"
+  iterationsMin="5"
+  iterationsMax="8"
+  cycleDelay="4"
   loop="true"
 ]
 
 ## Credits
 This plugin builds upon the original Flapper project by Jay Kay Ess, available at:
-https://github.com/jayKayEss/Flapper
-
-
+[https://github.com/jayKayEss/Flapper](https://github.com/jayKayEss/Flapper)
