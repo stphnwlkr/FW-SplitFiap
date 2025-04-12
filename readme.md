@@ -80,7 +80,7 @@ cycleDelay=“4000”
 loop=“true”
 font=”‘DIN 1451 LT Pro’, sans-serif”
 ]
-
+```
 This shortcode will display a light-themed split-flap with 10 columns, flipping through four cities using a custom font.
 
 ---
