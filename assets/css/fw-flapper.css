@@ -1,0 +1,146 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&display=swap');
+
+:root {
+  --split-flap-font: 'Roboto Mono', monospace;
+  
+  /* Dark Theme Colors */
+  --dark-bg: #222;
+  --dark-digit-bg: #111;
+  --dark-border: #333;
+  --dark-text: #f0f0f0;
+  
+  /* Light Theme Colors */
+  --light-bg: #f5f5f5;
+  --light-digit-bg: #fff;
+  --light-border: #ddd;
+  --light-text: #333;
+  
+  --split-flap-perspective: 500px;
+}
+
+/* Container styling */
+.split-flap-display {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+    font-family: var(--split-flap-font);
+    perspective: var(--split-flap-perspective);
+    margin: 1em 0;
+}
+
+/* Multi-line container */
+.split-flap-line {
+  display: flex;
+}
+
+/* Base digit styling */
+.split-flap-digit {
+  position: relative;
+  display: inline-block;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-right: 2px;
+  border-radius: 4px;
+  background-color: var(--dark-digit-bg);
+  border: 1px solid var(--dark-border);
+  color: var(--dark-text);
+	text-transform:uppercase;
+}
+.split-flap-display[data-theme="light"] .split-flap-digit {
+  background-color: var(--light-digit-bg);
+  border-color: var(--light-border);
+  color: var(--light-text);
+}
+
+/* Common styles for each panel */
+.split-flap-digit > div {
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* Hint browser to use hardware acceleration */
+  will-change: transform;
+}
+
+/* Use a 40/60 split between top and bottom panels */
+.split-flap-top,
+.split-flap-top-back {
+  height: 47%;
+  width: 100%;
+}
+.split-flap-bottom,
+.split-flap-bottom-back {
+  height: 53%;
+  width: 100%;
+}
+
+/* Define the hinge borders */
+.split-flap-top, .split-flap-top-back {
+  border-bottom: 1px solid var(--dark-border);
+}
+.split-flap-display[data-theme="light"] .split-flap-top,
+.split-flap-display[data-theme="light"] .split-flap-top-back {
+  border-bottom-color: var(--light-border);
+}
+.split-flap-bottom, .split-flap-bottom-back {
+  border-top: 1px solid var(--dark-border);
+}
+.split-flap-display[data-theme="light"] .split-flap-bottom,
+.split-flap-display[data-theme="light"] .split-flap-bottom-back {
+  border-top-color: var(--light-border);
+}
+
+/* Position inner spans so that the top panels show the upper half and the bottom panels show the lower half */
+.split-flap-top span,
+.split-flap-top-back span {
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+.split-flap-bottom span,
+.split-flap-bottom-back span {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Flip animations using hardware acceleration (translate3d) */
+.split-flap-digit.flipping .split-flap-top {
+  animation: flip-top 0.05s ease-in forwards;
+}
+.split-flap-digit.flipping .split-flap-bottom-back {
+  animation: flip-bottom 0.05s ease-out forwards;
+}
+
+@keyframes flip-top {
+  from { transform: rotateX(0deg) translate3d(0,0,0); }
+  to   { transform: rotateX(-90deg) translate3d(0,0,0); }
+}
+
+@keyframes flip-bottom {
+  from { transform: rotateX(90deg) translate3d(0,0,0); }
+  to   { transform: rotateX(0deg) translate3d(0,0,0); }
+}
+
+/* Size variations */
+.split-flap-display[data-size="small"] .split-flap-digit {
+  width: 30px;
+  height: 40px;
+  font-size: 28px;
+  line-height: 40px;
+}
+.split-flap-display[data-size="medium"] .split-flap-digit {
+  width: 40px;
+  height: 54px;
+  font-size: 38px;
+  line-height: 54px;
+}
+.split-flap-display[data-size="large"] .split-flap-digit {
+  width: 60px;
+  height: 80px;
+  font-size: 56px;
+  line-height: 80px;
+}
