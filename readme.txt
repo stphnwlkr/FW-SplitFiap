@@ -1,8 +1,8 @@
-# FW SplitFlip Plugin
+#FW SplitFlip Plugin
 
 **FW SplitFlip* is a WordPress plugin that implements a split-flap display effect using a shortcode. The display is built with vanilla JavaScript and CSS and supports multiple configuration options, including multi-line text wrapping. This allows you to show a dynamic, animated display that can cycle through multiple phrases without breaking words.
 
-## Features
+##Features
 
 - **Shortcode-based Integration:** Easily insert the split-flap display using the `[split_flap]` shortcode.
 - **Multi-line Text Wrapping:** Automatically wraps long text into multiple rows based on a maximum tile width.
@@ -18,7 +18,7 @@
   - Cycle delay and looping behavior
 - **Smooth Animations:** Uses requestAnimationFrame-based timing and hardware-accelerated CSS transforms for improved performance.
 
-## Installation
+##Installation
 
 1. **Download or clone** the repository.
 2. **Copy the plugin folder** (e.g., `fw-flapper-plugin`) into your WordPress `wp-content/plugins/` directory.
