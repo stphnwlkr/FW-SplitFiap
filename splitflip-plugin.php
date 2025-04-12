@@ -49,16 +49,16 @@ class SplitFlapDisplay {
                 'chars'         => 'numeric',
                 'align'         => 'left',
                 'padding'       => ' ',
-                'speed'         => '2',
-                'iterationsMin' => '4',
+                'speed'         => '400',
+                'iterationsMin' => '5',
                 'iterationsMax' => '8',
-                'cycleDelay'    => '4',
+                'cycleDelay'    => '2000',
                 'loop'          => 'true',
             ],
             $atts,
             'split_flap'
         );
-
+    
         // Sanitize the attributes.
         $value         = sanitize_text_field( $atts['value'] );
         $values        = sanitize_text_field( $atts['values'] );
@@ -73,12 +73,28 @@ class SplitFlapDisplay {
         $iterationsMax = absint( $atts['iterationsMax'] );
         $cycleDelay    = absint( $atts['cycleDelay'] );
         $loop          = sanitize_text_field( $atts['loop'] );
-
+    
+        // --- Dynamic Placeholder Replacement ---
+        // Example: Replace {post:title} in value and each semicolon-delimited value.
+        if ( strpos( $value, '{post:title}' ) !== false ) {
+            $value = str_replace( '{post:title}', get_the_title(), $value );
+        }
+        if ( ! empty( $values ) ) {
+            // Split into individual values, then replace each occurrence.
+            $valuesArray = array_map( function( $v ) {
+                return ( strpos( $v, '{post:title}' ) !== false )
+                    ? str_replace( '{post:title}', get_the_title(), $v )
+                    : $v;
+            }, explode( ';', $values ) );
+            // Save back as a semicolon-delimited string.
+            $values = implode( ';', $valuesArray );
+        }
+        // --- End Dynamic Replacement ---
+    
         // Generate a unique container ID.
         $id = 'split-flap-' . wp_rand( 1000, 9999 );
-
+    
         // Build the container with data attributes.
-        // If "values" is provided (non-empty), that takes precedence.
         $html  = '<div id="' . esc_attr( $id ) . '" class="split-flap-display" ';
         $html .= 'data-value="' . esc_attr( $value ) . '" ';
         $html .= 'data-values="' . esc_attr( $values ) . '" ';
@@ -94,7 +110,82 @@ class SplitFlapDisplay {
         $html .= 'data-iterations-max="' . esc_attr( $iterationsMax ) . '" ';
         $html .= 'data-cycle-delay="' . esc_attr( $cycleDelay ) . '">';
         $html .= '</div>';
-
+    
+        return $html;
+    }public function render_split_flap( $atts ) {
+        // Define default attributes.
+        $atts = shortcode_atts(
+            [
+                'value'         => '0',
+                'values'        => '',  // Semicolon-delimited list of values.
+                'width'         => '5',
+                'size'          => 'medium',
+                'theme'         => 'dark',
+                'chars'         => 'numeric',
+                'align'         => 'left',
+                'padding'       => ' ',
+                'speed'         => '2',
+                'iterationsMin' => '4',
+                'iterationsMax' => '8',
+                'cycleDelay'    => '4',
+                'loop'          => 'false',
+            ],
+            $atts,
+            'split_flap'
+        );
+    
+        // Sanitize the attributes.
+        $value         = sanitize_text_field( $atts['value'] );
+        $values        = sanitize_text_field( $atts['values'] );
+        $width         = absint( $atts['width'] );
+        $size          = sanitize_key( $atts['size'] );
+        $theme         = sanitize_key( $atts['theme'] );
+        $chars         = sanitize_key( $atts['chars'] );
+        $align         = sanitize_key( $atts['align'] );
+        $padding       = sanitize_text_field( $atts['padding'] );
+        $speed         = absint( $atts['speed'] );
+        $iterationsMin = absint( $atts['iterationsMin'] );
+        $iterationsMax = absint( $atts['iterationsMax'] );
+        $cycleDelay    = absint( $atts['cycleDelay'] );
+        $loop          = sanitize_text_field( $atts['loop'] );
+    
+        // --- Dynamic Placeholder Replacement ---
+        // Example: Replace {post:title} in value and each semicolon-delimited value.
+        if ( strpos( $value, '{post:title}' ) !== false ) {
+            $value = str_replace( '{post:title}', get_the_title(), $value );
+        }
+        if ( ! empty( $values ) ) {
+            // Split into individual values, then replace each occurrence.
+            $valuesArray = array_map( function( $v ) {
+                return ( strpos( $v, '{post:title}' ) !== false )
+                    ? str_replace( '{post:title}', get_the_title(), $v )
+                    : $v;
+            }, explode( ';', $values ) );
+            // Save back as a semicolon-delimited string.
+            $values = implode( ';', $valuesArray );
+        }
+        // --- End Dynamic Replacement ---
+    
+        // Generate a unique container ID.
+        $id = 'split-flap-' . wp_rand( 1000, 9999 );
+    
+        // Build the container with data attributes.
+        $html  = '<div id="' . esc_attr( $id ) . '" class="split-flap-display" ';
+        $html .= 'data-value="' . esc_attr( $value ) . '" ';
+        $html .= 'data-values="' . esc_attr( $values ) . '" ';
+        $html .= 'data-width="' . esc_attr( $width ) . '" ';
+        $html .= 'data-size="' . esc_attr( $size ) . '" ';
+        $html .= 'data-theme="' . esc_attr( $theme ) . '" ';
+        $html .= 'data-chars="' . esc_attr( $chars ) . '" ';
+        $html .= 'data-align="' . esc_attr( $align ) . '" ';
+        $html .= 'data-padding="' . esc_attr( $padding ) . '" ';
+        $html .= 'data-loop="' . esc_attr( $loop ) . '" ';
+        $html .= 'data-speed="' . esc_attr( $speed ) . '" ';
+        $html .= 'data-iterations-min="' . esc_attr( $iterationsMin ) . '" ';
+        $html .= 'data-iterations-max="' . esc_attr( $iterationsMax ) . '" ';
+        $html .= 'data-cycle-delay="' . esc_attr( $cycleDelay ) . '">';
+        $html .= '</div>';
+    
         return $html;
     }
 }
