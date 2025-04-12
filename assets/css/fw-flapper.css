@@ -1,7 +1,5 @@
-@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400&display=swap');
-
 :root {
-  --split-flap-font: 'Roboto Mono', monospace;
+  --split-flap-font: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace; /* default fallback */
   
   /* Dark Theme Colors */
   --dark-bg: #222;
@@ -17,7 +15,15 @@
   
   --split-flap-perspective: 500px;
 }
-
+/* Use the custom font if set */
+.split-flap-display {
+  display: flex;
+  flex-direction: column;
+  gap: .5rem;
+  font-family: var(--split-flap-font);
+  perspective: var(--split-flap-perspective);
+  margin: 1em 0;
+}
 /* Container styling */
 .split-flap-display {
     display: flex;

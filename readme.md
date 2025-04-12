@@ -1,91 +1,107 @@
 # FW SplitFlap Plugin
 
-**FW SplitFlap*** is a WordPress plugin that implements a split-flap display effect using a shortcode. The display is built with vanilla JavaScript and CSS and supports multiple configuration options, including multi-line text wrapping. This allows you to show a dynamic, animated display that can cycle through multiple phrases without breaking words.
+**FW SplitFlap** is a WordPress plugin that implements a split-flap display effect using a shortcode. The display is built with vanilla JavaScript and CSS and supports extensive customization, including multi-line wrapping, randomized flip animations, and custom fonts. It delivers a visually rich, dynamic experience for cycling through text.
 
-## Features
+---
 
-- **Shortcode-based Integration:** Easily insert the split-flap display using the `[split_flap]` shortcode.
-- **Multi-line Text Wrapping:** Automatically wraps long text into multiple rows based on a maximum tile width.
-- **Customizable Options:** Configure text values, layout, and animation parameters including:
-  - Single or multiple values (semicolon-delimited)
-  - Maximum tile width (which drives word wrapping)
-  - Display sizes (small, medium, large)
-  - Themes (dark, light)
-  - Character sets (numeric, alpha, alphanumeric)
-  - Alignment (left or right)
+## ✨ Features
+
+- **Shortcode-based Integration**  
+  Easily embed the split-flap display using `[split_flap]` anywhere on your site.
+
+- **Smart Multi-line Wrapping**  
+  Automatically wraps long values into multiple rows, preserving word boundaries based on tile width.
+
+- **Highly Configurable Options**  
+  Supports:
+  - Single static `value` or multi-value cycling via `values` (semicolon-delimited)
+  - Tile-based layout with `width`, size (`small`, `medium`, `large`), and alignment
+  - Themes (`dark`, `light`) and character sets (`numeric`, `alpha`, `alphanumeric`)
+  - Flip animation speed, delay, iterations, and loop control
   - Padding character
-  - Flip animation speed and flip iterations
-  - Cycle delay and looping behavior
-- **Smooth Animations:** Uses requestAnimationFrame-based timing and hardware-accelerated CSS transforms for improved performance.
+  - ✅ **Custom fonts via `font` attribute**
 
-## Installation
+- **Smooth Flip Animations**  
+  Hardware-accelerated CSS transforms and async JavaScript create a fast and fluid animation effect.
 
-1. **Download or clone** the repository.
-2. **Copy the plugin folder** (e.g., `fw-flapper-plugin`) into your WordPress `wp-content/plugins/` directory.
-3. **Activate the plugin** from your WordPress admin under **Plugins**.
-4. **Embed the display** in your posts or pages using the `[split_flap]` shortcode with your desired attributes.
+- **Self-hosted and Privacy-Friendly**  
+  All assets are loaded locally. No Google Fonts or external CDNs required.
 
-## Usage
+---
 
-Place the shortcode in a WordPress post or page with the available attributes. The plugin supports the following attributes:
+## 🛠 Installation
 
-- **value**:
-  A single text string to display. _(Default: "0")_
+1. Download or clone the plugin repository.
+2. Copy the plugin folder (e.g., `fw-flapper-plugin`) into your WordPress `/wp-content/plugins/` directory.
+3. Activate the plugin from the WordPress **Plugins** admin screen.
+4. Insert the `[split_flap]` shortcode into your posts, pages, or templates.
 
-- **values**:
-  A semicolon-delimited list of text values. If provided, this takes precedence over **value**.
+---
 
-- **width**:
-  Maximum number of tiles per row. Long text is wrapped into new rows as needed. _(Default: 5)_
+## ⚙️ Usage
 
-- **size**:
-  Display size. Options: `small`, `medium`, `large`. _(Default: medium)_
+Use the `[split_flap]` shortcode with any of the following attributes:
 
-- **theme**:
-  Color theme. Options: `dark`, `light`. _(Default: dark)_
+| Attribute         | Description                                                                 | Default         |
+|-------------------|-----------------------------------------------------------------------------|-----------------|
+| `value`           | A single value to display.                                                  | `0`             |
+| `values`          | A semicolon-delimited list of values to cycle through.                      | *(none)*        |
+| `width`           | Number of tiles per row. Long text will wrap accordingly.                   | `5`             |
+| `size`            | Display size: `small`, `medium`, `large`.                                   | `medium`        |
+| `theme`           | Color theme: `dark`, `light`.                                               | `dark`          |
+| `chars`           | Character set for flip animation: `numeric`, `alpha`, `alphanumeric`.       | `numeric`       |
+| `align`           | Text alignment: `left`, `right`.                                            | `left`          |
+| `padding`         | Character used for padding short values.                                    | (space)         |
+| `speed`           | Flip duration in milliseconds.                                              | `2`             |
+| `iterationsMin`   | Minimum number of random flips per digit.                                   | `4`             |
+| `iterationsMax`   | Maximum number of random flips per digit.                                   | `8`             |
+| `cycleDelay`      | Delay between value changes in milliseconds.                                | `4000`          |
+| `loop`            | Whether to cycle through values repeatedly: `"true"` or `"false"`.          | `true`          |
+| `font`            | Custom font family (e.g., `'Courier New', monospace`).                      | *(inherited)*   |
 
-- **chars**:
-  Character set for randomized flips. Options: `numeric`, `alpha`, `alphanumeric`. _(Default: numeric)_
+---
 
-- **align**:
-  Text alignment in the digit panels. Options: `left`, `right`. _(Default: left)_
-
-- **padding**:
-  Character used for padding if the text is shorter than the width. _(Default: a single space)_
-
-- **speed**:
-  Duration (in milliseconds) for each flip cycle. _(Default: 2)_
-
-- **iterationsMin**:
-  Minimum number of random flip iterations per digit. _(Default: 4)_
-
-- **iterationsMax**:
-  Maximum number of random flip iterations per digit. _(Default: 8)_
-
-- **cycleDelay**:
-  Delay (in milliseconds) between cycling values when using multiple values. _(Default: 4)_
-
-- **loop**:
-  Whether to cycle through values continuously. Accepts `"true"` or `"false"`. _(Default: true)_
-
-### Example Shortcode
+## 📘 Example Shortcode
 
 ```plaintext
+
 [split_flap
-  value="Traditionally our industry has used Lorem Ipsum, which is placeholder text written in Latin. Unfortunately, not everyone is familiar with Lorem Ipsum and that can lead to confusion."
-  width="30"
-  size="medium"
-  theme="dark"
-  chars="alpha"
-  align="left"
-  padding=" "
-  speed="2"
-  iterationsMin="5"
-  iterationsMax="8"
-  cycleDelay="4"
-  loop="true"
+values=“London; Barcelona; Venice; Moscow”
+width=“10”
+size=“large”
+theme=“light”
+chars=“alpha”
+align=“left”
+padding=” “
+speed=“50”
+iterationsMin=“8”
+iterationsMax=“12”
+cycleDelay=“4000”
+loop=“true”
+font=”‘DIN 1451 LT Pro’, sans-serif”
 ]
 
-## Credits
-This plugin builds upon the original Flapper project by Jay Kay Ess, available at:
-[https://github.com/jayKayEss/Flapper](https://github.com/jayKayEss/Flapper)
+This shortcode will display a light-themed split-flap with 10 columns, flipping through four cities using a custom font.
+
+---
+
+## 🧩 Notes
+
+- The `values` attribute takes precedence over `value`.
+- Word wrapping is automatically applied if text exceeds the given `width`.
+- Fonts must be loaded via theme or plugin styles using `@font-face`.
+- No remote assets (Google Fonts) are used, making it GDPR/privacy friendly.
+
+---
+
+## 🙌 Credits
+
+This plugin builds upon the original concept and animation principles by [@jayKayEss](https://github.com/jayKayEss/Flapper).
+
+> GitHub: [https://github.com/jayKayEss/Flapper](https://github.com/jayKayEss/Flapper)
+
+---
+
+## 🧪 Development Notes
+
+This plugin is written in modern vanilla JavaScript with zero dependencies (no jQuery). It is ready for future extension into a React-based block or Gutenberg integration.
