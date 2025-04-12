@@ -15,11 +15,14 @@
 - **Highly Configurable Options**  
   Supports:
   - Single static `value` or multi-value cycling via `values` (semicolon-delimited)
-  - Tile-based layout with `width`, size (`small`, `medium`, `large`), and alignment
+  - Tile-based layout with `width`, responsive `size`, and alignment
   - Themes (`dark`, `light`) and character sets (`numeric`, `alpha`, `alphanumeric`)
   - Flip animation speed, delay, iterations, and loop control
   - Padding character
   - ✅ **Custom fonts via `font` attribute**
+
+- **Responsive T-Shirt Sizing**  
+  Sizes like `xs`, `sm`, `md`, `lg`, `xl`, and `2xl` scale automatically with screen width.
 
 - **Smooth Flip Animations**  
   Hardware-accelerated CSS transforms and async JavaScript create a fast and fluid animation effect.
@@ -47,7 +50,7 @@ Use the `[split_flap]` shortcode with any of the following attributes:
 | `value`           | A single value to display.                                                  | `0`             |
 | `values`          | A semicolon-delimited list of values to cycle through.                      | *(none)*        |
 | `width`           | Number of tiles per row. Long text will wrap accordingly.                   | `5`             |
-| `size`            | Display size: `small`, `medium`, `large`.                                   | `medium`        |
+| `size`            | Responsive size: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`.                       | `md`            |
 | `theme`           | Color theme: `dark`, `light`.                                               | `dark`          |
 | `chars`           | Character set for flip animation: `numeric`, `alpha`, `alphanumeric`.       | `numeric`       |
 | `align`           | Text alignment: `left`, `right`.                                            | `left`          |
@@ -57,18 +60,17 @@ Use the `[split_flap]` shortcode with any of the following attributes:
 | `iterationsMax`   | Maximum number of random flips per digit.                                   | `8`             |
 | `cycleDelay`      | Delay between value changes in milliseconds.                                | `4000`          |
 | `loop`            | Whether to cycle through values repeatedly: `"true"` or `"false"`.          | `true`          |
-| `font`            | Custom font family (e.g., `'Courier New', monospace`).                      | Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;   |
+| `font`            | Custom font family (e.g., `'Courier New', monospace`).                      | *(inherited)*   |
 
 ---
 
 ## 📘 Example Shortcode
 
 ```plaintext
-
 [split_flap
 values=“London; Barcelona; Venice; Moscow”
 width=“10”
-size=“large”
+size=“xl”
 theme=“light”
 chars=“alpha”
 align=“left”
@@ -78,10 +80,10 @@ iterationsMin=“8”
 iterationsMax=“12”
 cycleDelay=“4000”
 loop=“true”
-font=”din-1451-lt-pro”
+font=”‘DIN 1451 LT Pro’, sans-serif”
 ]
 ```
-This shortcode will display a light-themed split-flap with 10 columns, flipping through four cities using a custom font.
+This shortcode will display a light-themed split-flap with 10 columns, flipping through four cities using a custom font and extra-large size.
 
 ---
 
@@ -89,8 +91,8 @@ This shortcode will display a light-themed split-flap with 10 columns, flipping 
 
 - The `values` attribute takes precedence over `value`.
 - Word wrapping is automatically applied if text exceeds the given `width`.
-- Fonts must be loaded via theme or plugin styles using `@font-face`.
-- No remote assets (Google Fonts) are used, making it GDPR/privacy friendly.
+- Font families must be available via CSS (`@font-face`) in your theme or plugin.
+- No external fonts or assets are loaded by default.
 
 ---
 
@@ -104,4 +106,4 @@ This plugin builds upon the original concept and animation principles by [@jayKa
 
 ## 🧪 Development Notes
 
-This plugin is written in modern vanilla JavaScript with zero dependencies (no jQuery). It is ready for future extension into a React-based block or Gutenberg integration.
+This plugin is written in modern vanilla JavaScript (no jQuery) and fully self-contained. It is optimized for extensibility and ready for integration as a Gutenberg block or React-based editor UI.

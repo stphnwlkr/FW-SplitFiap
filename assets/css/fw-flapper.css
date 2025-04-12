@@ -131,22 +131,46 @@
   to   { transform: rotateX(0deg) translate3d(0,0,0); }
 }
 
-/* Size variations */
-.split-flap-display[data-size="small"] .split-flap-digit {
-  width: 30px;
-  height: 40px;
-  font-size: 28px;
-  line-height: 40px;
+/* Responsive T-shirt Sizes for Split-Flap Digits */
+
+.split-flap-display[data-size="xs"] .split-flap-digit {
+  width: clamp(1.5rem, 3vw, 2rem);
+  height: clamp(2rem, 4vw, 2.75rem);
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  line-height: 1;
 }
-.split-flap-display[data-size="medium"] .split-flap-digit {
-  width: 40px;
-  height: 54px;
-  font-size: 38px;
-  line-height: 54px;
+
+.split-flap-display[data-size="sm"] .split-flap-digit {
+  width: clamp(1.75rem, 3.5vw, 2.25rem);
+  height: clamp(2.25rem, 4.5vw, 3rem);
+  font-size: clamp(1.5rem, 3.5vw, 1.75rem);
+  line-height: 1;
 }
-.split-flap-display[data-size="large"] .split-flap-digit {
-  width: 60px;
-  height: 80px;
-  font-size: 56px;
-  line-height: 80px;
+
+.split-flap-display[data-size="md"] .split-flap-digit {
+  width: clamp(2rem, 4vw, 3rem);
+  height: clamp(2.75rem, 6.5vw, 3.375rem);
+  font-size: clamp(2rem, 4.5vw, 2.375rem);
+  line-height: 1;
+}
+
+.split-flap-display[data-size="lg"] .split-flap-digit {
+  width: clamp(2.3rem, 5vw, 3.45rem);
+  height: clamp(3.25rem, 7.5vw, 3.9rem);
+  font-size: clamp(2.3rem, 5.5vw, 2.7rem);
+  line-height: 1;
+}
+
+.split-flap-display[data-size="xl"] .split-flap-digit {
+  width: clamp(2.66rem, 6vw, 4rem);
+  height: clamp(3.66rem, 8.5vw, 4.5rem);
+  font-size: clamp(2.66rem, 6.5vw, 3rem);
+  line-height: 1;
+}
+
+.split-flap-display[data-size="2xl"] .split-flap-digit {
+  width: clamp(3.5rem, 7.5vw, 5.3rem);
+  height: clamp(4.66rem, 10vw, 6rem);
+  font-size: clamp(3.25rem, 7.5vw, 4rem);
+  line-height: 1;
 }
