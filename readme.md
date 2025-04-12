@@ -85,8 +85,6 @@ Place the shortcode in a WordPress post or page with the available attributes. T
   cycleDelay="4"
   loop="true"
 ]
-## 1.1.0 - DynamicOOO Data
-Now supports the used of dynamic data.
 
 ## Credits
 This plugin builds upon the original Flapper project by Jay Kay Ess, available at:
