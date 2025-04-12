@@ -57,7 +57,7 @@ Use the `[split_flap]` shortcode with any of the following attributes:
 | `iterationsMax`   | Maximum number of random flips per digit.                                   | `8`             |
 | `cycleDelay`      | Delay between value changes in milliseconds.                                | `4000`          |
 | `loop`            | Whether to cycle through values repeatedly: `"true"` or `"false"`.          | `true`          |
-| `font`            | Custom font family (e.g., `'Courier New', monospace`).                      | *(inherited)*   |
+| `font`            | Custom font family (e.g., `'Courier New', monospace`).                      | Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace;   |
 
 ---
 
@@ -78,7 +78,7 @@ iterationsMin=“8”
 iterationsMax=“12”
 cycleDelay=“4000”
 loop=“true”
-font=”‘DIN 1451 LT Pro’, sans-serif”
+font=”din-1451-lt-pro”
 ]
 
 This shortcode will display a light-themed split-flap with 10 columns, flipping through four cities using a custom font.
