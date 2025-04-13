@@ -50,9 +50,9 @@ Use the `[split_flap]` shortcode with any of the following attributes:
 | `value`           | A single value to display.                                                  | `0`             |
 | `values`          | A semicolon-delimited list of values to cycle through.                      | *(none)*        |
 | `width`           | Number of tiles per row. Long text will wrap accordingly.                   | `5`             |
-| `size`            | Responsive size: `xs`, `sm`, `md`, `lg`, `xl`, `2xl`.                       | `md`            |
+| `size`            | Responsive size: `xs`, `sm`, `md`, `lg`, `xl`.                              | `md`            |
 | `theme`           | Color theme: `dark`, `light`.                                               | `dark`          |
-| `chars`           | Character set for flip animation: `numeric`, `alpha`, `alphanumeric`.       | `numeric`       |
+| `chars`           | Character set for flip animation: `numeric`, `alpha`, `alphanumeric`.       | `alphanumeric`       |
 | `align`           | Text alignment: `left`, `right`.                                            | `left`          |
 | `padding`         | Character used for padding short values.                                    | (space)         |
 | `speed`           | Flip duration in milliseconds.                                              | `2`             |

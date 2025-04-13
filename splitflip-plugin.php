@@ -46,7 +46,7 @@ public function render_split_flap( $atts ) {
             'width'         => '5',
             'size'          => 'md',
             'theme'         => 'dark',
-            'chars'         => 'numeric',
+            'chars'         => 'alphanumeric',
             'align'         => 'left',
             'padding'       => ' ',
             'speed'         => '2',
