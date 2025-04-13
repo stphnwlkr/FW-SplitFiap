@@ -3,7 +3,7 @@
  * Plugin Name: FW SplitFlip
  * Plugin URI: https://example.com/split-flap-display
  * Description: A WordPress plugin that implements a split-flap display effect using shortcodes.
- * Version: 1.0.2
+ * Version: 1.0.3
  * Author: Stephen Walker
  * Author URI: https://flyingw.co
  * Text Domain: fw-flapper

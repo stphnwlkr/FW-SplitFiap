@@ -21,8 +21,18 @@
   - Padding character
   - ✅ **Custom fonts via `font` attribute**
 
-- **Responsive T-Shirt Sizing**  
-  Sizes like `xs`, `sm`, `md`, `lg`, `xl`, and `2xl` scale automatically with screen width.
+- **T-Shirt Sizing**  
+  Sizes like `xs`, `sm`, `md`, `lg`, and `xl`available for various sizing. CSS variable can be used to adjest as needed.
+  
+```plaintext
+/* Extra Large */
+.split-flap-display[data-size="xl"] {
+  --digit-width: 90px;
+  --digit-height: 110px;
+  --digit-font-size: 76px;
+  --digit-line-height: 1.42;
+}
+```
 
 - **Smooth Flip Animations**  
   Hardware-accelerated CSS transforms and async JavaScript create a fast and fluid animation effect.
@@ -35,7 +45,7 @@
 ## 🛠 Installation
 
 1. Download or clone the plugin repository.
-2. Copy the plugin folder (e.g., `fw-flapper-plugin`) into your WordPress `/wp-content/plugins/` directory.
+2. Copy the plugin folder (e.g., `fFW-SplitFiap`) into your WordPress `/wp-content/plugins/` directory.
 3. Activate the plugin from the WordPress **Plugins** admin screen.
 4. Insert the `[split_flap]` shortcode into your posts, pages, or templates.
 

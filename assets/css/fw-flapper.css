@@ -1,42 +1,58 @@
 :root {
   --split-flap-font: Menlo, Consolas, Monaco, Liberation Mono, Lucida Console, monospace; /* default fallback */
-  
+
   /* Dark Theme Colors */
   --dark-bg: #222;
   --dark-digit-bg: #111;
   --dark-border: #333;
   --dark-text: #f0f0f0;
-  
+
   /* Light Theme Colors */
   --light-bg: #f5f5f5;
   --light-digit-bg: #fff;
   --light-border: #ddd;
   --light-text: #333;
-  
+
   --split-flap-perspective: 500px;
+
+  /* Common layout properties */
+  --split-flap-display: flex;
+  --split-flap-flex-direction: column;
+  --split-flap-gap: 0.5rem;
+  --split-flap-margin: 1em 0;
+
+  /* Panel dimensions */
+  --panel-width: 100%;
+  --top-panel-height: 47%;
+  --bottom-panel-height: 53%;
+
+  /* Animation settings */
+  --flip-duration: 0.05s;
+  --flip-top-timing: ease-in;
+  --flip-bottom-timing: ease-out;
+
+  /* Default (Medium) Digit Sizing */
+  --digit-width: 40px;
+  --digit-height: 54px;
+  --digit-font-size: 38px;
+  --digit-line-height: 1.42;
 }
-/* Use the custom font if set */
+
+/* Common display container styles */
 .split-flap-display {
-  display: flex;
-  flex-direction: column;
-  gap: .5rem;
+  display: var(--split-flap-display);
+  flex-direction: var(--split-flap-flex-direction);
+  gap: var(--split-flap-gap);
   font-family: var(--split-flap-font);
   perspective: var(--split-flap-perspective);
-  margin: 1em 0;
-}
-/* Container styling */
-.split-flap-display {
-    display: flex;
-    flex-direction: column;
-    gap: .5rem;
-    font-family: var(--split-flap-font);
-    perspective: var(--split-flap-perspective);
-    margin: 1em 0;
+  margin: var(--split-flap-margin);
 }
 
 /* Multi-line container */
 .split-flap-line {
-  display: flex;
+  display: var(--split-flap-display);
+  flex-direction: row; /* Make sure digits are in a row */
+  flex-wrap: nowrap; /* Prevent wrapping */
 }
 
 /* Base digit styling */
@@ -50,116 +66,165 @@
   background-color: var(--dark-digit-bg);
   border: 1px solid var(--dark-border);
   color: var(--dark-text);
-	text-transform:uppercase;
+  text-transform: uppercase;
+  
+  /* Apply digit sizing variables */
+  width: var(--digit-width);
+  height: var(--digit-height);
+  font-size: var(--digit-font-size);
+  line-height: var(--digit-line-height);
 }
+
 .split-flap-display[data-theme="light"] .split-flap-digit {
   background-color: var(--light-digit-bg);
   border-color: var(--light-border);
   color: var(--light-text);
 }
 
-/* Common styles for each panel */
+/* Common panel styles */
 .split-flap-digit > div {
-  position: relative;
+  position: absolute;
+  width: 100%;
   overflow: hidden;
   display: flex;
   justify-content: center;
   align-items: center;
   /* Hint browser to use hardware acceleration */
   will-change: transform;
+  /* Improve 3D effect */
+  backface-visibility: hidden;
 }
 
-/* Use a 40/60 split between top and bottom panels */
+/* Top and bottom panels using defined dimensions */
 .split-flap-top,
 .split-flap-top-back {
-  height: 47%;
-  width: 100%;
-}
-.split-flap-bottom,
-.split-flap-bottom-back {
-  height: 53%;
-  width: 100%;
+  top: 0;
+  height: var(--top-panel-height);
+  width: var(--panel-width);
 }
 
-/* Define the hinge borders */
-.split-flap-top, .split-flap-top-back {
-  border-bottom: 1px solid var(--dark-border);
+.split-flap-bottom,
+.split-flap-bottom-back {
+  bottom: 0;
+  height: var(--bottom-panel-height);
+  width: var(--panel-width);
 }
+
+/* Hinge borders definitions */
+.split-flap-top,
+.split-flap-top-back {
+  border-bottom: 1px solid var(--dark-border);
+  transform-origin: bottom center;
+}
+
 .split-flap-display[data-theme="light"] .split-flap-top,
 .split-flap-display[data-theme="light"] .split-flap-top-back {
   border-bottom-color: var(--light-border);
 }
-.split-flap-bottom, .split-flap-bottom-back {
+
+.split-flap-bottom,
+.split-flap-bottom-back {
   border-top: 1px solid var(--dark-border);
+  transform-origin: top center;
 }
+
 .split-flap-display[data-theme="light"] .split-flap-bottom,
 .split-flap-display[data-theme="light"] .split-flap-bottom-back {
   border-top-color: var(--light-border);
 }
 
-/* Position inner spans so that the top panels show the upper half and the bottom panels show the lower half */
+/* Set up back panels */
+.split-flap-top-back {
+  transform: rotateX(180deg);
+}
+
+.split-flap-bottom-back {
+  transform: rotateX(90deg);
+}
+
+/* Inner span positioning for panels */
 .split-flap-top span,
 .split-flap-top-back span {
   position: absolute;
   top: 0;
   left: 50%;
   transform: translateX(-50%);
+  font-size: var(--digit-font-size);
+  line-height: var(--digit-line-height);
 }
+
 .split-flap-bottom span,
 .split-flap-bottom-back span {
   position: absolute;
   bottom: 0;
   left: 50%;
   transform: translateX(-50%);
+  font-size: var(--digit-font-size);
+  line-height: var(--digit-line-height);
 }
 
-/* Flip animations using hardware acceleration (translate3d) */
+/* Flip animations using hardware acceleration */
 .split-flap-digit.flipping .split-flap-top {
-  animation: flip-top 0.05s ease-in forwards;
+  animation: flip-top var(--flip-duration) var(--flip-top-timing) forwards;
 }
+
 .split-flap-digit.flipping .split-flap-bottom-back {
-  animation: flip-bottom 0.05s ease-out forwards;
+  animation: flip-bottom var(--flip-duration) var(--flip-bottom-timing) forwards;
 }
 
 @keyframes flip-top {
-  from { transform: rotateX(0deg) translate3d(0,0,0); }
-  to   { transform: rotateX(-90deg) translate3d(0,0,0); }
+  from { transform: rotateX(0deg) translate3d(0, 0, 0); }
+  to   { transform: rotateX(-90deg) translate3d(0, 0, 1px); }
 }
 
 @keyframes flip-bottom {
-  from { transform: rotateX(90deg) translate3d(0,0,0); }
-  to   { transform: rotateX(0deg) translate3d(0,0,0); }
+  from { transform: rotateX(90deg) translate3d(0, 0, 0); }
+  to   { transform: rotateX(0deg) translate3d(0, 0, 1px); }
 }
 
-/* Responsive T-shirt Sizes for Split-Flap Digits */
-.split-flap-display[data-size="xs"] .split-flap-digit {
-  width: 20px;
-  height: 30px;
-  font-size: 18px;
-  line-height: 1.38;
+/* Responsive Overrides - Now correctly overriding custom properties */
+/* Extra Small */
+.split-flap-display[data-size="xs"] {
+  --digit-width: 20px;
+  --digit-height: 30px;
+  --digit-font-size: 18px;
+  --digit-line-height: 1.38;
 }
 
-.split-flap-display[data-size="sm"] .split-flap-digit {
-  width: 30px;
-  height: 40px;
-  font-size: 28px;
-  line-height: 1.38;
+/* Small */
+.split-flap-display[data-size="sm"] {
+  --digit-width: 30px;
+  --digit-height: 40px;
+  --digit-font-size: 28px;
+  --digit-line-height: 1.38;
 }
-.split-flap-display[data-size="md"] .split-flap-digit {
-  width: 40px;
-  height: 54px;
-  font-size: 38px;
-  line-height: 1.42;
+
+/* Large */
+.split-flap-display[data-size="lg"] {
+  --digit-width: 60px;
+  --digit-height: 80px;
+  --digit-font-size: 56px;
+  --digit-line-height: 1.42;
 }
-.split-flap-display[data-size="lg"] .split-flap-digit {
-  width: 60px;
-  height: 80px;
-  font-size: 56px;
-  line-height: 1.42;
+
+/* Extra Large */
+.split-flap-display[data-size="xl"] {
+  --digit-width: 90px;
+  --digit-height: 110px;
+  --digit-font-size: 76px;
+  --digit-line-height: 1.42;
 }
-.split-flap-display[data-size="xl"] .split-flap-digit {
-  width: 90px;
-  height: 110px;
-  font-size: 76px;
-  line-height: 1.42;
+
+/* Add shadow for more realism */
+.split-flap-top, .split-flap-bottom {
+  box-shadow: 0 0 3px rgba(0, 0, 0, 0.3) inset;
+}
+
+/* Add realistic perspective effect */
+.split-flap-display[data-theme="dark"] .split-flap-digit.flipping .split-flap-top {
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.5);
+}
+
+.split-flap-display[data-theme="light"] .split-flap-digit.flipping .split-flap-top {
+  box-shadow: 0 -5px 10px rgba(0, 0, 0, 0.2);
 }
