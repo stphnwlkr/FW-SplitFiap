@@ -22,8 +22,8 @@
   - ✅ **Custom fonts via `font` attribute**
 
 - **T-Shirt Sizing**  
-  Sizes like `xs`, `sm`, `md`, `lg`, and `xl`available for various sizing. CSS variable can be used to adjest as needed.
-  
+  Sizes like `xs`, `sm`, `md`, `lg`, and `xl`available for various sizing. CSS variables so you can be used to adjust as needed.
+
 ```plaintext
 /* Extra Large */
 .split-flap-display[data-size="xl"] {
