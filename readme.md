@@ -67,21 +67,7 @@ Use the `[split_flap]` shortcode with any of the following attributes:
 ## 📘 Example Shortcode
 
 ```plaintext
-[split_flap
-values=“London; Barcelona; Venice; Moscow”
-width=“10”
-size=“xl”
-theme=“light”
-chars=“alpha”
-align=“left”
-padding=” “
-speed=“50”
-iterationsMin=“8”
-iterationsMax=“12”
-cycleDelay=“4000”
-loop=“true”
-font=”‘DIN 1451 LT Pro’, sans-serif”
-]
+[split_flap values="London; Barcelona; Venice; Moscow" width="9" size="md" theme="dark" chars="alphanumeric" align="left" padding=" " speed="50" iterationsMin="8" iterationsMax="12" cycleDelay="5000" loop="true"]
 ```
 This shortcode will display a light-themed split-flap with 10 columns, flipping through four cities using a custom font and extra-large size.
 
