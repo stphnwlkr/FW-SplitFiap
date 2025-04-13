@@ -132,6 +132,12 @@
 }
 
 /* Responsive T-shirt Sizes for Split-Flap Digits */
+.split-flap-display[data-size="xs"] .split-flap-digit {
+  width: 20px;
+  height: 30px;
+  font-size: 18px;
+  line-height: 1.38;
+}
 
 .split-flap-display[data-size="sm"] .split-flap-digit {
   width: 30px;
