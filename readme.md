@@ -98,8 +98,3 @@ This plugin builds upon the original concept and animation principles by [@jayKa
 
 > GitHub: [https://github.com/jayKayEss/Flapper](https://github.com/jayKayEss/Flapper)
 
----
-
-## 🧪 Development Notes
-
-This plugin is written in modern vanilla JavaScript (no jQuery) and fully self-contained. It is optimized for extensibility and ready for integration as a Gutenberg block or React-based editor UI.
